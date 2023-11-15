@@ -12,13 +12,11 @@ final class ClassicSynchronizer
     public function synchronizeActive() : void
     {
         $records = $this->dataSource->all();
-        $records = array_filter(
-            $records,
-            static fn (DataObject $item) => $item->active,
-        );
 
         foreach ($records as $record) {
-            $this->repository->save($record->name, $record->value);
+            if ($record->active) {
+                $this->repository->save($record->name, $record->value);
+            }
         }
     }
 }
