@@ -37,5 +37,10 @@ final class TestCase extends \PHPUnit\Framework\TestCase
     public static function implementations() : iterable
     {
         yield [ClassicSynchronizer::class];
+        yield [ClassicSynchronizerWithFilterDelegated::class];
+        yield [ClassicSynchronizerWithFilterExtracted::class];
+        yield [FlowSynchronizer::class];
+        yield [FlowSynchronizerWithLoaderExtracted::class];
+        yield [FlowSynchronizerWithAllExtracted::class];
     }
 }
